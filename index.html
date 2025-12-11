@@ -3,808 +3,427 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Header Styles</title>
+    <title>Portfolio Headers - Tailwind CSS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: #f8f9fa;
-            color: #333;
-            padding: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .header-preview {
-            text-align: center;
-            margin-bottom: 40px;
-            padding: 20px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-        
-        .header-preview h1 {
-            font-size: 2.5rem;
-            color: #2d3436;
-            margin-bottom: 10px;
-        }
-        
-        .header-preview p {
-            color: #636e72;
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto 20px;
-        }
-        
-        .style-selector {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .style-btn {
-            padding: 10px 20px;
-            background: #6c5ce7;
-            color: white;
-            border: none;
-            border-radius: 30px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .style-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.3);
-        }
-        
-        .style-btn.active {
-            background: #2d3436;
-        }
-        
-        .portfolio-headers {
-            display: flex;
-            flex-direction: column;
-            gap: 60px;
-            margin-bottom: 60px;
-        }
-        
-        /* Header 1 - Modern Minimalist */
-        .header-1 {
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-            border-radius: 20px;
-            padding: 60px 40px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.5);
-        }
-        
-        .header-1::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 300px;
-            height: 300px;
-            background: linear-gradient(135deg, rgba(108, 92, 231, 0.05) 0%, rgba(108, 92, 231, 0) 70%);
-            border-radius: 0 0 0 100%;
-            z-index: 0;
-        }
-        
-        .header-content-1 {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .header-text-1 {
-            flex: 1;
-        }
-        
-        .header-1 .name {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 3.2rem;
-            font-weight: 700;
-            color: #2d3436;
-            margin-bottom: 10px;
-            line-height: 1.1;
-        }
-        
-        .header-1 .title {
-            font-size: 1.5rem;
-            color: #6c5ce7;
-            font-weight: 500;
-            margin-bottom: 20px;
-        }
-        
-        .header-1 .description {
-            font-size: 1.1rem;
-            color: #636e72;
-            line-height: 1.6;
-            max-width: 500px;
-            margin-bottom: 30px;
-        }
-        
-        .header-1 .cta-buttons {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .btn {
-            padding: 12px 28px;
-            border-radius: 30px;
-            font-weight: 500;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            font-size: 1rem;
-        }
-        
-        .btn-primary {
-            background: #6c5ce7;
-            color: white;
-            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.2);
-        }
-        
-        .btn-primary:hover {
-            background: #5a4fcf;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(108, 92, 231, 0.3);
-        }
-        
-        .btn-secondary {
-            background: transparent;
-            color: #2d3436;
-            border: 2px solid #dfe6e9;
-        }
-        
-        .btn-secondary:hover {
-            border-color: #6c5ce7;
-            color: #6c5ce7;
-            transform: translateY(-3px);
-        }
-        
-        .header-image-1 {
-            flex: 0 0 300px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .avatar-placeholder-1 {
-            width: 250px;
-            height: 250px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #6c5ce7, #a29bfe);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 4rem;
-            box-shadow: 0 15px 30px rgba(108, 92, 231, 0.2);
-        }
-        
-        /* Header 2 - Dark Professional */
-        .header-2 {
-            background: linear-gradient(135deg, #2d3436 0%, #1a1a1a 100%);
-            border-radius: 20px;
-            padding: 70px 50px;
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .header-2::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(0, 184, 148, 0.1) 0%, rgba(0, 184, 148, 0) 70%);
-            border-radius: 50%;
-        }
-        
-        .header-2::after {
-            content: '';
-            position: absolute;
-            bottom: -30%;
-            left: -10%;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(9, 132, 227, 0.1) 0%, rgba(9, 132, 227, 0) 70%);
-            border-radius: 50%;
-        }
-        
-        .header-content-2 {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-        }
-        
-        .header-2 .name {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-            background: linear-gradient(to right, #00b894, #0984e3);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        
-        .header-2 .title {
-            font-size: 1.4rem;
-            color: #dfe6e9;
-            margin-bottom: 25px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-        }
-        
-        .header-2 .description {
-            font-size: 1.15rem;
-            color: #b2bec3;
-            line-height: 1.7;
-            max-width: 700px;
-            margin: 0 auto 40px;
-        }
-        
-        .stats-2 {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-        
-        .stat-item {
-            text-align: center;
-        }
-        
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #00b894;
-            margin-bottom: 5px;
-        }
-        
-        .stat-label {
-            font-size: 0.9rem;
-            color: #b2bec3;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .header-2 .cta-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-        }
-        
-        .btn-dark {
-            background: #00b894;
-            color: white;
-            box-shadow: 0 5px 15px rgba(0, 184, 148, 0.2);
-        }
-        
-        .btn-dark:hover {
-            background: #00a085;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 184, 148, 0.3);
-        }
-        
-        .btn-outline-light {
-            background: transparent;
-            color: white;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-        }
-        
-        .btn-outline-light:hover {
-            border-color: #00b894;
-            color: #00b894;
-            transform: translateY(-3px);
-        }
-        
-        /* Header 3 - Creative Designer */
-        .header-3 {
-            background: white;
-            border-radius: 20px;
-            padding: 60px 40px;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-        }
-        
-        .header-3::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(to right, #ff7675, #fd79a8, #a29bfe, #74b9ff);
-        }
-        
-        .header-content-3 {
-            display: flex;
-            align-items: center;
-            gap: 40px;
-        }
-        
-        .header-image-3 {
-            flex: 0 0 200px;
-        }
-        
-        .avatar-placeholder-3 {
-            width: 200px;
-            height: 200px;
-            border-radius: 20px;
-            background: linear-gradient(135deg, #ff7675, #fd79a8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 3.5rem;
-            transform: rotate(-5deg);
-            box-shadow: 10px 10px 0 #dfe6e9;
-        }
-        
-        .header-text-3 {
-            flex: 1;
-        }
-        
-        .header-3 .name {
-            font-family: 'Poppins', sans-serif;
-            font-size: 3rem;
-            font-weight: 700;
-            color: #2d3436;
-            margin-bottom: 10px;
-        }
-        
-        .header-3 .title {
-            font-size: 1.5rem;
-            color: #ff7675;
-            font-weight: 500;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .title-decoration {
-            width: 30px;
-            height: 4px;
-            background: #ff7675;
-            margin-right: 15px;
-        }
-        
-        .header-3 .description {
-            font-size: 1.1rem;
-            color: #636e72;
-            line-height: 1.6;
-            margin-bottom: 30px;
-            max-width: 500px;
-        }
-        
-        .skills-3 {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 30px;
-        }
-        
-        .skill-tag {
-            background: #f8f9fa;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            color: #636e72;
-            border: 1px solid #dfe6e9;
-        }
-        
-        .header-3 .cta-buttons {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .btn-creative {
-            background: #ff7675;
-            color: white;
-            box-shadow: 0 5px 15px rgba(255, 118, 117, 0.2);
-        }
-        
-        .btn-creative:hover {
-            background: #e66766;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(255, 118, 117, 0.3);
-        }
-        
-        .btn-social {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: #f8f9fa;
-            color: #636e72;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            border: 1px solid #dfe6e9;
-        }
-        
-        .btn-social:hover {
-            background: #ff7675;
-            color: white;
-            transform: translateY(-3px);
-            border-color: #ff7675;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 10px;
-            margin-left: 10px;
-        }
-        
-        /* Code Display */
-        .code-display {
-            background: #2d3436;
-            color: #dfe6e9;
-            border-radius: 10px;
-            padding: 20px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.9rem;
-            overflow-x: auto;
-            margin-top: 20px;
-            display: none;
-        }
-        
-        .code-display.active {
-            display: block;
-        }
-        
-        .code-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #404848;
-        }
-        
-        .copy-btn {
-            background: #00b894;
-            color: white;
-            border: none;
-            padding: 5px 15px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.8rem;
-        }
-        
-        /* Responsive */
-        @media (max-width: 992px) {
-            .header-content-1, .header-content-3 {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .header-1 .cta-buttons, .header-3 .cta-buttons {
-                justify-content: center;
-            }
-            
-            .header-image-1, .header-image-3 {
-                margin-top: 30px;
-            }
-            
-            .stats-2 {
-                flex-wrap: wrap;
-            }
-            
-            .header-1 .name, .header-2 .name, .header-3 .name {
-                font-size: 2.5rem;
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    animation: {
+                        'fade-in-down': 'fadeInDown 0.6s ease-out',
+                        'fade-in-up': 'fadeInUp 0.6s ease-out',
+                        'slide-in-right': 'slideInRight 0.5s ease-out',
+                        'pulse-slow': 'pulse 3s infinite',
+                    },
+                    keyframes: {
+                        fadeInDown: {
+                            '0%': { opacity: '0', transform: 'translateY(-20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        slideInRight: {
+                            '0%': { opacity: '0', transform: 'translateX(20px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+                    },
+                }
             }
         }
-        
-        @media (max-width: 576px) {
-            .header-1, .header-2, .header-3 {
-                padding: 40px 20px;
-            }
-            
-            .header-1 .name, .header-2 .name, .header-3 .name {
-                font-size: 2rem;
-            }
-            
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .btn {
-                width: 100%;
-                max-width: 250px;
-            }
-            
-            .social-links {
-                margin-left: 0;
-                margin-top: 10px;
-                justify-content: center;
-            }
-        }
-    </style>
+    </script>
 </head>
-<body>
-    <div class="header-preview">
-        <h1>Portfolio Header Styles</h1>
-        <p>Choose from three professionally designed portfolio headers. Click on a style button to view the HTML code for that design.</p>
-        
-        <div class="style-selector">
-            <button class="style-btn active" data-style="1">Modern Minimalist</button>
-            <button class="style-btn" data-style="2">Dark Professional</button>
-            <button class="style-btn" data-style="3">Creative Designer</button>
+<body class="bg-gray-50 min-h-screen p-4 md:p-8">
+    
+    <!-- Page Header -->
+    <div class="max-w-7xl mx-auto mb-12 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent mb-4">
+            Portfolio Headers with Navigation
+        </h1>
+        <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+            Three different portfolio header designs built entirely with Tailwind CSS
+        </p>
+        <div class="flex flex-wrap justify-center gap-3 mt-6">
+            <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm font-medium">Tailwind CSS Only</span>
+            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">Fully Responsive</span>
+            <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium">Interactive</span>
         </div>
     </div>
-    
-    <div class="portfolio-headers">
-        <!-- Header 1: Modern Minimalist -->
-        <div class="header-1" id="header1">
-            <div class="header-content-1">
-                <div class="header-text-1">
-                    <h1 class="name">Alex Morgan</h1>
-                    <h2 class="title">Frontend Developer & UI Designer</h2>
-                    <p class="description">I create beautiful, functional web experiences with a focus on clean code, responsive design, and user-centered interfaces. Passionate about modern JavaScript frameworks and cutting-edge CSS techniques.</p>
-                    <div class="cta-buttons">
-                        <a href="#" class="btn btn-primary">View My Work</a>
-                        <a href="#" class="btn btn-secondary">Download CV</a>
-                    </div>
-                </div>
-                <div class="header-image-1">
-                    <div class="avatar-placeholder-1">
-                        <i class="fas fa-user"></i>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="code-display" id="code1">
-                <div class="code-header">
-                    <span>HTML Code for Modern Minimalist Header</span>
-                    <button class="copy-btn" data-target="code1">Copy Code</button>
-                </div>
-                <pre><code>&lt;div class="header-1"&gt;
-  &lt;div class="header-content-1"&gt;
-    &lt;div class="header-text-1"&gt;
-      &lt;h1 class="name"&gt;Alex Morgan&lt;/h1&gt;
-      &lt;h2 class="title"&gt;Frontend Developer &amp; UI Designer&lt;/h2&gt;
-      &lt;p class="description"&gt;I create beautiful, functional web experiences...&lt;/p&gt;
-      &lt;div class="cta-buttons"&gt;
-        &lt;a href="#" class="btn btn-primary"&gt;View My Work&lt;/a&gt;
-        &lt;a href="#" class="btn btn-secondary"&gt;Download CV&lt;/a&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="header-image-1"&gt;
-      &lt;div class="avatar-placeholder-1"&gt;
-        &lt;i class="fas fa-user"&gt;&lt;/i&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre>
-            </div>
-        </div>
-        
-        <!-- Header 2: Dark Professional -->
-        <div class="header-2" id="header2">
-            <div class="header-content-2">
-                <h1 class="name">Sarah Chen</h1>
-                <h2 class="title">Full Stack Developer</h2>
-                <p class="description">Building scalable web applications with modern technologies. Specializing in React, Node.js, and cloud infrastructure. I transform complex problems into elegant, efficient solutions.</p>
-                
-                <div class="stats-2">
-                    <div class="stat-item">
-                        <div class="stat-number">50+</div>
-                        <div class="stat-label">Projects Completed</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">5+</div>
-                        <div class="stat-label">Years Experience</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">100%</div>
-                        <div class="stat-label">Client Satisfaction</div>
-                    </div>
-                </div>
-                
-                <div class="cta-buttons">
-                    <a href="#" class="btn btn-dark">View Portfolio</a>
-                    <a href="#" class="btn btn-outline-light">Contact Me</a>
-                </div>
-            </div>
-            
-            <div class="code-display" id="code2">
-                <div class="code-header">
-                    <span>HTML Code for Dark Professional Header</span>
-                    <button class="copy-btn" data-target="code2">Copy Code</button>
-                </div>
-                <pre><code>&lt;div class="header-2"&gt;
-  &lt;div class="header-content-2"&gt;
-    &lt;h1 class="name"&gt;Sarah Chen&lt;/h1&gt;
-    &lt;h2 class="title"&gt;Full Stack Developer&lt;/h2&gt;
-    &lt;p class="description"&gt;Building scalable web applications...&lt;/p&gt;
-    
-    &lt;div class="stats-2"&gt;
-      &lt;div class="stat-item"&gt;
-        &lt;div class="stat-number"&gt;50+&lt;/div&gt;
-        &lt;div class="stat-label"&gt;Projects Completed&lt;/div&gt;
-      &lt;/div&gt;
-      &lt;div class="stat-item"&gt;
-        &lt;div class="stat-number"&gt;5+&lt;/div&gt;
-        &lt;div class="stat-label"&gt;Years Experience&lt;/div&gt;
-      &lt;/div&gt;
-      &lt;div class="stat-item"&gt;
-        &lt;div class="stat-number"&gt;100%&lt;/div&gt;
-        &lt;div class="stat-label"&gt;Client Satisfaction&lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-    
-    &lt;div class="cta-buttons"&gt;
-      &lt;a href="#" class="btn btn-dark"&gt;View Portfolio&lt;/a&gt;
-      &lt;a href="#" class="btn btn-outline-light"&gt;Contact Me&lt;/a&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre>
-            </div>
-        </div>
-        
-        <!-- Header 3: Creative Designer -->
-        <div class="header-3" id="header3">
-            <div class="header-content-3">
-                <div class="header-image-3">
-                    <div class="avatar-placeholder-3">
-                        <i class="fas fa-paint-brush"></i>
-                    </div>
-                </div>
-                <div class="header-text-3">
-                    <h1 class="name">Jamie Rivera</h1>
-                    <h2 class="title">
-                        <span class="title-decoration"></span>
-                        Digital Designer & Art Director
-                    </h2>
-                    <p class="description">Creating visually stunning digital experiences that tell stories and evoke emotions. I blend design principles with technical expertise to deliver memorable brand experiences.</p>
-                    
-                    <div class="skills-3">
-                        <span class="skill-tag">UI/UX Design</span>
-                        <span class="skill-tag">Brand Identity</span>
-                        <span class="skill-tag">Motion Graphics</span>
-                        <span class="skill-tag">Web Design</span>
-                        <span class="skill-tag">Illustration</span>
+
+    <!-- Header 1: Modern Minimalist -->
+    <div class="max-w-7xl mx-auto mb-16">
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
+            <!-- Header with Navigation -->
+            <div class="p-6 md:p-8">
+                <!-- Navigation Bar -->
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 md:mb-12 gap-4">
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+                            <span class="text-white font-bold text-xl">JM</span>
+                        </div>
+                        <span class="ml-3 text-xl font-bold text-gray-800">Jordan Miller</span>
                     </div>
                     
-                    <div class="cta-buttons">
-                        <a href="#" class="btn btn-creative">Explore Projects</a>
-                        <div class="social-links">
-                            <a href="#" class="btn-social"><i class="fab fa-behance"></i></a>
-                            <a href="#" class="btn-social"><i class="fab fa-dribbble"></i></a>
-                            <a href="#" class="btn-social"><i class="fab fa-instagram"></i></a>
-                            <a href="#" class="btn-social"><i class="fab fa-linkedin-in"></i></a>
+                    <!-- Desktop Navigation -->
+                    <div class="hidden md:flex items-center space-x-8">
+                        <a href="#" class="text-gray-600 hover:text-purple-600 font-medium transition-colors">Work</a>
+                        <a href="#" class="text-gray-600 hover:text-purple-600 font-medium transition-colors">Services</a>
+                        <a href="#" class="text-gray-600 hover:text-purple-600 font-medium transition-colors">About</a>
+                        <a href="#" class="text-gray-600 hover:text-purple-600 font-medium transition-colors">Blog</a>
+                        <button class="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-2 rounded-lg font-medium hover:opacity-90 transition-opacity">
+                            Contact
+                        </button>
+                    </div>
+                    
+                    <!-- Mobile Menu Button -->
+                    <button class="md:hidden text-gray-600">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+                
+                <!-- Hero Content -->
+                <div class="flex flex-col lg:flex-row items-center justify-between gap-8">
+                    <div class="lg:w-7/12">
+                        <span class="inline-block px-4 py-2 bg-gradient-to-r from-purple-50 to-blue-50 text-purple-700 rounded-full font-medium mb-4">
+                            Frontend Developer & UI Designer
+                        </span>
+                        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                            I create <span class="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">beautiful</span> digital experiences
+                        </h2>
+                        <p class="text-gray-600 text-lg mb-8 max-w-2xl">
+                            Specializing in React, Vue.js, and modern CSS frameworks. I transform complex problems into elegant, user-friendly solutions.
+                        </p>
+                        <div class="flex flex-wrap gap-4">
+                            <button class="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-3 rounded-lg font-medium hover:shadow-lg transition-shadow">
+                                View Projects
+                            </button>
+                            <button class="border-2 border-gray-300 text-gray-700 px-8 py-3 rounded-lg font-medium hover:border-purple-500 hover:text-purple-600 transition-colors">
+                                Download CV
+                            </button>
+                        </div>
+                        <div class="flex items-center mt-8 space-x-6">
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 rounded-full bg-gradient-to-r from-purple-100 to-blue-100 flex items-center justify-center">
+                                    <i class="fas fa-medal text-purple-600"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <p class="font-bold text-gray-900">5+ Years</p>
+                                    <p class="text-gray-500 text-sm">Experience</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 rounded-full bg-gradient-to-r from-purple-100 to-blue-100 flex items-center justify-center">
+                                    <i class="fas fa-project-diagram text-purple-600"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <p class="font-bold text-gray-900">120+</p>
+                                    <p class="text-gray-500 text-sm">Projects</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Profile Image -->
+                    <div class="lg:w-5/12 flex justify-center">
+                        <div class="relative">
+                            <div class="w-64 h-64 md:w-80 md:h-80 bg-gradient-to-br from-purple-500 to-blue-500 rounded-2xl shadow-xl flex items-center justify-center">
+                                <i class="fas fa-user text-white text-8xl"></i>
+                            </div>
+                            <div class="absolute -bottom-4 -right-4 bg-white p-4 rounded-xl shadow-lg">
+                                <div class="text-center">
+                                    <p class="font-bold text-gray-900">Available for</p>
+                                    <p class="text-purple-600 font-semibold">Freelance Work</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <div class="code-display" id="code3">
-                <div class="code-header">
-                    <span>HTML Code for Creative Designer Header</span>
-                    <button class="copy-btn" data-target="code3">Copy Code</button>
-                </div>
-                <pre><code>&lt;div class="header-3"&gt;
-  &lt;div class="header-content-3"&gt;
-    &lt;div class="header-image-3"&gt;
-      &lt;div class="avatar-placeholder-3"&gt;
-        &lt;i class="fas fa-paint-brush"&gt;&lt;/i&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="header-text-3"&gt;
-      &lt;h1 class="name"&gt;Jamie Rivera&lt;/h1&gt;
-      &lt;h2 class="title"&gt;
-        &lt;span class="title-decoration"&gt;&lt;/span&gt;
-        Digital Designer &amp; Art Director
-      &lt;/h2&gt;
-      &lt;p class="description"&gt;Creating visually stunning digital experiences...&lt;/p&gt;
-      
-      &lt;div class="skills-3"&gt;
-        &lt;span class="skill-tag"&gt;UI/UX Design&lt;/span&gt;
-        &lt;span class="skill-tag"&gt;Brand Identity&lt;/span&gt;
-        &lt;span class="skill-tag"&gt;Motion Graphics&lt;/span&gt;
-        &lt;span class="skill-tag"&gt;Web Design&lt;/span&gt;
-        &lt;span class="skill-tag"&gt;Illustration&lt;/span&gt;
-      &lt;/div&gt;
-      
-      &lt;div class="cta-buttons"&gt;
-        &lt;a href="#" class="btn btn-creative"&gt;Explore Projects&lt;/a&gt;
-        &lt;div class="social-links"&gt;
-          &lt;a href="#" class="btn-social"&gt;&lt;i class="fab fa-behance"&gt;&lt;/i&gt;&lt;/a&gt;
-          &lt;a href="#" class="btn-social"&gt;&lt;i class="fab fa-dribbble"&gt;&lt;/i&gt;&lt;/a&gt;
-          &lt;a href="#" class="btn-social"&gt;&lt;i class="fab fa-instagram"&gt;&lt;/i&gt;&lt;/a&gt;
-          &lt;a href="#" class="btn-social"&gt;&lt;i class="fab fa-linkedin-in"&gt;&lt;/i&gt;&lt;/a&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre>
+            <!-- Footer of Header 1 -->
+            <div class="px-8 py-4 bg-gray-50 border-t border-gray-100">
+                <p class="text-gray-500 text-sm">Header 1: Modern Minimalist Design</p>
             </div>
         </div>
     </div>
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const styleBtns = document.querySelectorAll('.style-btn');
-            const codeDisplays = document.querySelectorAll('.code-display');
-            const copyBtns = document.querySelectorAll('.copy-btn');
+
+    <!-- Header 2: Dark Professional -->
+    <div class="max-w-7xl mx-auto mb-16">
+        <div class="bg-gradient-to-br from-gray-900 to-black rounded-2xl shadow-2xl overflow-hidden">
+            <!-- Header with Navigation -->
+            <div class="p-6 md:p-8">
+                <!-- Navigation Bar -->
+                <div class="flex justify-between items-center mb-12">
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-gradient-to-tr from-cyan-500 to-blue-500 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-code text-white text-xl"></i>
+                        </div>
+                        <span class="ml-4 text-2xl font-bold text-white">Sarah Chen</span>
+                    </div>
+                    
+                    <!-- Desktop Navigation -->
+                    <div class="hidden md:flex items-center space-x-10">
+                        <a href="#" class="text-gray-300 hover:text-white font-medium transition-colors">Portfolio</a>
+                        <a href="#" class="text-gray-300 hover:text-white font-medium transition-colors">Experience</a>
+                        <a href="#" class="text-gray-300 hover:text-white font-medium transition-colors">Skills</a>
+                        <a href="#" class="text-gray-300 hover:text-white font-medium transition-colors">Testimonials</a>
+                        <button class="bg-gradient-to-r from-cyan-500 to-blue-500 text-white px-6 py-2 rounded-lg font-medium hover:shadow-lg hover:shadow-cyan-500/25 transition-shadow">
+                            Get In Touch
+                        </button>
+                    </div>
+                    
+                    <!-- Mobile Menu Button -->
+                    <button class="md:hidden text-white">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+                
+                <!-- Hero Content -->
+                <div class="flex flex-col lg:flex-row items-center justify-between gap-10">
+                    <div class="lg:w-6/12">
+                        <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
+                            Full Stack Developer & <span class="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">Tech Lead</span>
+                        </h2>
+                        <p class="text-gray-300 text-lg mb-8 max-w-xl">
+                            Building scalable applications with React, Node.js, and cloud technologies. Passionate about clean architecture and performance optimization.
+                        </p>
+                        
+                        <!-- Stats -->
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+                            <div class="text-center">
+                                <p class="text-3xl font-bold text-white">50+</p>
+                                <p class="text-gray-400">Projects</p>
+                            </div>
+                            <div class="text-center">
+                                <p class="text-3xl font-bold text-white">100%</p>
+                                <p class="text-gray-400">Satisfaction</p>
+                            </div>
+                            <div class="text-center">
+                                <p class="text-3xl font-bold text-white">5.0</p>
+                                <p class="text-gray-400">Avg. Rating</p>
+                            </div>
+                            <div class="text-center">
+                                <p class="text-3xl font-bold text-white">24/7</p>
+                                <p class="text-gray-400">Support</p>
+                            </div>
+                        </div>
+                        
+                        <!-- CTA Buttons -->
+                        <div class="flex flex-wrap gap-4">
+                            <button class="bg-gradient-to-r from-cyan-500 to-blue-500 text-white px-8 py-3 rounded-lg font-medium hover:shadow-lg hover:shadow-cyan-500/25 transition-shadow">
+                                View Case Studies
+                            </button>
+                            <button class="bg-white/10 backdrop-blur-sm text-white px-8 py-3 rounded-lg font-medium hover:bg-white/20 transition-colors border border-white/20">
+                                Schedule Call
+                            </button>
+                        </div>
+                        
+                        <!-- Social Links -->
+                        <div class="flex space-x-4 mt-8">
+                            <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
+                                <i class="fab fa-github text-white"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
+                                <i class="fab fa-linkedin-in text-white"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
+                                <i class="fab fa-twitter text-white"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Tech Stack -->
+                    <div class="lg:w-6/12">
+                        <div class="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700/50">
+                            <h3 class="text-xl font-bold text-white mb-6">Tech Stack</h3>
+                            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                                <div class="bg-gray-800/50 p-4 rounded-xl">
+                                    <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-lg flex items-center justify-center mb-3">
+                                        <i class="fab fa-react text-white"></i>
+                                    </div>
+                                    <p class="text-white font-medium">React.js</p>
+                                </div>
+                                <div class="bg-gray-800/50 p-4 rounded-xl">
+                                    <div class="w-10 h-10 bg-gradient-to-r from-green-500 to-emerald-400 rounded-lg flex items-center justify-center mb-3">
+                                        <i class="fab fa-node-js text-white"></i>
+                                    </div>
+                                    <p class="text-white font-medium">Node.js</p>
+                                </div>
+                                <div class="bg-gray-800/50 p-4 rounded-xl">
+                                    <div class="w-10 h-10 bg-gradient-to-r from-yellow-500 to-orange-400 rounded-lg flex items-center justify-center mb-3">
+                                        <i class="fas fa-database text-white"></i>
+                                    </div>
+                                    <p class="text-white font-medium">MongoDB</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             
-            // Style selector functionality
-            styleBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const style = this.getAttribute('data-style');
+            <!-- Footer of Header 2 -->
+            <div class="px-8 py-4 bg-gray-900/50 border-t border-gray-800">
+                <p class="text-gray-400 text-sm">Header 2: Dark Professional Design</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header 3: Creative Designer -->
+    <div class="max-w-7xl mx-auto">
+        <div class="bg-gradient-to-br from-white to-gray-50 rounded-2xl shadow-xl overflow-hidden border border-gray-200">
+            <!-- Header with Navigation -->
+            <div class="p-6 md:p-8">
+                <!-- Navigation Bar -->
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-6">
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-gradient-to-br from-pink-500 to-orange-400 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-palette text-white"></i>
+                        </div>
+                        <div class="ml-3">
+                            <span class="text-2xl font-bold text-gray-900">Alex Rivera</span>
+                            <p class="text-pink-600 text-sm font-medium">Creative Director</p>
+                        </div>
+                    </div>
                     
-                    // Update active button
-                    styleBtns.forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
+                    <!-- Desktop Navigation -->
+                    <div class="hidden md:flex items-center space-x-8">
+                        <a href="#" class="text-gray-600 hover:text-pink-600 font-medium transition-colors">Gallery</a>
+                        <a href="#" class="text-gray-600 hover:text-pink-600 font-medium transition-colors">Process</a>
+                        <a href="#" class="text-gray-600 hover:text-pink-600 font-medium transition-colors">Clients</a>
+                        <a href="#" class="text-gray-600 hover:text-pink-600 font-medium transition-colors">Shop</a>
+                        <a href="#" class="text-gray-600 hover:text-pink-600 font-medium transition-colors">Journal</a>
+                        <button class="bg-gradient-to-r from-pink-500 to-orange-400 text-white px-6 py-2 rounded-full font-medium hover:shadow-lg hover:shadow-pink-500/25 transition-shadow">
+                            Start a Project
+                        </button>
+                    </div>
                     
-                    // Hide all code displays
-                    codeDisplays.forEach(code => code.classList.remove('active'));
+                    <!-- Mobile Menu Button -->
+                    <button class="md:hidden text-gray-600">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+                
+                <!-- Hero Content -->
+                <div class="flex flex-col lg:flex-row items-center gap-10">
+                    <!-- Left Content -->
+                    <div class="lg:w-6/12">
+                        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                            Designing <span class="bg-gradient-to-r from-pink-600 to-orange-500 bg-clip-text text-transparent">experiences</span> that inspire
+                        </h2>
+                        <p class="text-gray-600 text-lg mb-8 max-w-xl">
+                            Blending aesthetics with functionality to create memorable brand experiences. Specializing in UI/UX, brand identity, and motion design.
+                        </p>
+                        
+                        <!-- Skills -->
+                        <div class="flex flex-wrap gap-3 mb-8">
+                            <span class="px-4 py-2 bg-pink-50 text-pink-700 rounded-full font-medium">UI/UX Design</span>
+                            <span class="px-4 py-2 bg-orange-50 text-orange-700 rounded-full font-medium">Brand Identity</span>
+                            <span class="px-4 py-2 bg-purple-50 text-purple-700 rounded-full font-medium">Motion Graphics</span>
+                            <span class="px-4 py-2 bg-blue-50 text-blue-700 rounded-full font-medium">Web Design</span>
+                        </div>
+                        
+                        <!-- CTA Buttons -->
+                        <div class="flex flex-wrap items-center gap-4">
+                            <button class="bg-gradient-to-r from-pink-500 to-orange-400 text-white px-8 py-3 rounded-full font-medium hover:shadow-lg hover:shadow-pink-500/25 transition-shadow">
+                                View Portfolio
+                            </button>
+                            <div class="flex items-center">
+                                <div class="flex -space-x-2">
+                                    <div class="w-8 h-8 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full"></div>
+                                    <div class="w-8 h-8 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full"></div>
+                                    <div class="w-8 h-8 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full"></div>
+                                </div>
+                                <span class="ml-3 text-gray-600">Worked with 50+ brands</span>
+                            </div>
+                        </div>
+                    </div>
                     
-                    // Show selected code display
-                    document.getElementById(`code${style}`).classList.add('active');
-                    
-                    // Scroll to the selected header
-                    document.getElementById(`header${style}`).scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                });
-            });
+                    <!-- Right Content -->
+                    <div class="lg:w-6/12">
+                        <div class="relative">
+                            <div class="bg-gradient-to-br from-pink-500 to-orange-400 rounded-2xl p-1">
+                                <div class="bg-white rounded-xl p-6">
+                                    <div class="flex items-center mb-6">
+                                        <div class="w-12 h-12 bg-gradient-to-br from-pink-500 to-orange-400 rounded-full flex items-center justify-center">
+                                            <i class="fas fa-award text-white"></i>
+                                        </div>
+                                        <div class="ml-4">
+                                            <p class="font-bold text-gray-900">Award Winning</p>
+                                            <p class="text-gray-500">Design Studio</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-600 mb-6">
+                                        Featured in Design Weekly, Creative Review, and Behance's top selections.
+                                    </p>
+                                    <div class="flex justify-between">
+                                        <div>
+                                            <p class="text-2xl font-bold text-gray-900">4.9/5.0</p>
+                                            <p class="text-gray-500">Client Rating</p>
+                                        </div>
+                                        <div>
+                                            <p class="text-2xl font-bold text-gray-900">98%</p>
+                                            <p class="text-gray-500">Retention Rate</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Floating Elements -->
+                            <div class="absolute -top-4 -right-4 bg-white p-4 rounded-xl shadow-lg">
+                                <div class="flex items-center">
+                                    <div class="w-10 h-10 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full flex items-center justify-center">
+                                        <i class="fas fa-check text-white"></i>
+                                    </div>
+                                    <div class="ml-3">
+                                        <p class="font-bold text-gray-900">Available</p>
+                                        <p class="text-gray-500 text-sm">For new projects</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             
-            // Copy code functionality
-            copyBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const targetId = this.getAttribute('data-target');
-                    const codeElement = document.getElementById(targetId).querySelector('code');
-                    const codeText = codeElement.textContent;
-                    
-                    // Create temporary textarea to copy text
-                    const textarea = document.createElement('textarea');
-                    textarea.value = codeText;
-                    document.body.appendChild(textarea);
-                    textarea.select();
-                    document.execCommand('copy');
-                    document.body.removeChild(textarea);
-                    
-                    // Visual feedback
-                    const originalText = this.textContent;
-                    this.textContent = 'Copied!';
-                    this.style.background = '#00b894';
-                    
-                    setTimeout(() => {
-                        this.textContent = originalText;
-                        this.style.background = '';
-                    }, 2000);
-                });
-            });
-            
-            // Initially show first header's code
-            document.getElementById('code1').classList.add('active');
-        });
-    </script>
+            <!-- Footer of Header 3 -->
+            <div class="px-8 py-4 bg-gray-50 border-t border-gray-100">
+                <p class="text-gray-500 text-sm">Header 3: Creative Designer Style</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Style Selector -->
+    <div class="max-w-7xl mx-auto mt-12 p-6 bg-white rounded-xl shadow-md">
+        <h3 class="text-xl font-bold text-gray-900 mb-4">Choose Your Style</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="p-4 border-2 border-gray-200 rounded-lg hover:border-purple-500 transition-colors cursor-pointer">
+                <div class="w-full h-32 bg-gradient-to-r from-purple-500 to-blue-500 rounded-lg mb-4"></div>
+                <h4 class="font-bold text-gray-900 mb-2">Modern Minimalist</h4>
+                <p class="text-gray-600 text-sm">Clean design with purple/blue gradient and split layout</p>
+            </div>
+            <div class="p-4 border-2 border-gray-200 rounded-lg hover:border-blue-500 transition-colors cursor-pointer">
+                <div class="w-full h-32 bg-gradient-to-r from-gray-900 to-black rounded-lg mb-4"></div>
+                <h4 class="font-bold text-gray-900 mb-2">Dark Professional</h4>
+                <p class="text-gray-600 text-sm">Dark theme with cyan accents and tech stack display</p>
+            </div>
+            <div class="p-4 border-2 border-gray-200 rounded-lg hover:border-pink-500 transition-colors cursor-pointer">
+                <div class="w-full h-32 bg-gradient-to-r from-pink-500 to-orange-400 rounded-lg mb-4"></div>
+                <h4 class="font-bold text-gray-900 mb-2">Creative Designer</h4>
+                <p class="text-gray-600 text-sm">Colorful design with pink/orange gradient and creative elements</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Note -->
+    <div class="max-w-7xl mx-auto mt-8 text-center text-gray-500">
+        <p>Built entirely with Tailwind CSS • Fully responsive • No custom CSS required</p>
+    </div>
+
 </body>
 </html>
