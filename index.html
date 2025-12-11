@@ -3,336 +3,807 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Animated Column Boxes</title>
+    <title>Portfolio Header Styles</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            color: #fff;
-            min-height: 100vh;
-            padding: 40px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        header {
-            text-align: center;
-            margin-bottom: 60px;
-            max-width: 800px;
-        }
-        
-        h1 {
-            font-size: 2.8rem;
-            margin-bottom: 15px;
-            background: linear-gradient(to right, #00b4db, #0083b0);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0 2px 10px rgba(0, 131, 176, 0.2);
-        }
-        
-        .subtitle {
-            font-size: 1.2rem;
-            color: #a0aec0;
-            margin-bottom: 10px;
-        }
-        
-        .instructions {
-            background: rgba(255, 255, 255, 0.05);
-            border-left: 4px solid #00b4db;
-            padding: 15px;
-            border-radius: 0 8px 8px 0;
-            margin-top: 25px;
-            font-size: 0.95rem;
-        }
-        
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
+            font-family: 'Poppins', sans-serif;
+            background: #f8f9fa;
+            color: #333;
+            padding: 20px;
             max-width: 1200px;
             margin: 0 auto;
         }
         
-        .column {
-            flex: 1;
-            min-width: 300px;
-            max-width: 350px;
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 16px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: transform 0.4s ease, opacity 0.4s ease;
-            opacity: 0;
-            transform: translateY(30px);
+        .header-preview {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
         
-        /* Animation classes */
-        .column.animate {
-            opacity: 1;
-            transform: translateY(0);
+        .header-preview h1 {
+            font-size: 2.5rem;
+            color: #2d3436;
+            margin-bottom: 10px;
         }
         
-        /* Staggered animations */
-        .column:nth-child(1).animate {
-            transition-delay: 0.1s;
+        .header-preview p {
+            color: #636e72;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 20px;
         }
         
-        .column:nth-child(2).animate {
-            transition-delay: 0.2s;
-        }
-        
-        .column:nth-child(3).animate {
-            transition-delay: 0.3s;
-        }
-        
-        .column:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.12);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-        }
-        
-        .icon {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #00b4db, #0083b0);
+        .style-selector {
             display: flex;
-            align-items: center;
             justify-content: center;
-            margin-bottom: 25px;
-            font-size: 30px;
-            box-shadow: 0 5px 15px rgba(0, 180, 219, 0.3);
+            gap: 15px;
+            margin-top: 20px;
         }
         
-        h2 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            color: #00b4db;
-        }
-        
-        .column-content {
-            line-height: 1.6;
-            color: #cbd5e0;
-            margin-bottom: 20px;
-        }
-        
-        .column-content p {
-            margin-bottom: 15px;
-        }
-        
-        .features {
-            list-style-type: none;
-            margin: 20px 0;
-        }
-        
-        .features li {
-            padding: 8px 0;
-            border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-        }
-        
-        .features li:before {
-            content: "✓";
-            color: #00b4db;
-            font-weight: bold;
-            margin-right: 10px;
-        }
-        
-        .scroll-indicator {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: rgba(0, 180, 219, 0.9);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
+        .style-btn {
+            padding: 10px 20px;
+            background: #6c5ce7;
             color: white;
-            box-shadow: 0 4px 15px rgba(0, 180, 219, 0.4);
+            border: none;
+            border-radius: 30px;
+            font-weight: 500;
             cursor: pointer;
-            z-index: 100;
             transition: all 0.3s ease;
         }
         
-        .scroll-indicator:hover {
-            transform: scale(1.1);
-            background: rgba(0, 131, 176, 0.9);
+        .style-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.3);
         }
         
-        footer {
-            margin-top: 60px;
+        .style-btn.active {
+            background: #2d3436;
+        }
+        
+        .portfolio-headers {
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+        
+        /* Header 1 - Modern Minimalist */
+        .header-1 {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 20px;
+            padding: 60px 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.5);
+        }
+        
+        .header-1::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, rgba(108, 92, 231, 0.05) 0%, rgba(108, 92, 231, 0) 70%);
+            border-radius: 0 0 0 100%;
+            z-index: 0;
+        }
+        
+        .header-content-1 {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header-text-1 {
+            flex: 1;
+        }
+        
+        .header-1 .name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.2rem;
+            font-weight: 700;
+            color: #2d3436;
+            margin-bottom: 10px;
+            line-height: 1.1;
+        }
+        
+        .header-1 .title {
+            font-size: 1.5rem;
+            color: #6c5ce7;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+        
+        .header-1 .description {
+            font-size: 1.1rem;
+            color: #636e72;
+            line-height: 1.6;
+            max-width: 500px;
+            margin-bottom: 30px;
+        }
+        
+        .header-1 .cta-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .btn {
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+        
+        .btn-primary {
+            background: #6c5ce7;
+            color: white;
+            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.2);
+        }
+        
+        .btn-primary:hover {
+            background: #5a4fcf;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(108, 92, 231, 0.3);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: #2d3436;
+            border: 2px solid #dfe6e9;
+        }
+        
+        .btn-secondary:hover {
+            border-color: #6c5ce7;
+            color: #6c5ce7;
+            transform: translateY(-3px);
+        }
+        
+        .header-image-1 {
+            flex: 0 0 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .avatar-placeholder-1 {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+            box-shadow: 0 15px 30px rgba(108, 92, 231, 0.2);
+        }
+        
+        /* Header 2 - Dark Professional */
+        .header-2 {
+            background: linear-gradient(135deg, #2d3436 0%, #1a1a1a 100%);
+            border-radius: 20px;
+            padding: 70px 50px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-2::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0, 184, 148, 0.1) 0%, rgba(0, 184, 148, 0) 70%);
+            border-radius: 50%;
+        }
+        
+        .header-2::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(9, 132, 227, 0.1) 0%, rgba(9, 132, 227, 0) 70%);
+            border-radius: 50%;
+        }
+        
+        .header-content-2 {
+            position: relative;
+            z-index: 1;
             text-align: center;
-            color: #718096;
-            font-size: 0.9rem;
-            padding: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            width: 100%;
-            max-width: 800px;
         }
         
-        /* Responsive adjustments */
-        @media (max-width: 1100px) {
-            .container {
+        .header-2 .name {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #00b894, #0984e3);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .header-2 .title {
+            font-size: 1.4rem;
+            color: #dfe6e9;
+            margin-bottom: 25px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        
+        .header-2 .description {
+            font-size: 1.15rem;
+            color: #b2bec3;
+            line-height: 1.7;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+        
+        .stats-2 {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #00b894;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #b2bec3;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .header-2 .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .btn-dark {
+            background: #00b894;
+            color: white;
+            box-shadow: 0 5px 15px rgba(0, 184, 148, 0.2);
+        }
+        
+        .btn-dark:hover {
+            background: #00a085;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 184, 148, 0.3);
+        }
+        
+        .btn-outline-light {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .btn-outline-light:hover {
+            border-color: #00b894;
+            color: #00b894;
+            transform: translateY(-3px);
+        }
+        
+        /* Header 3 - Creative Designer */
+        .header-3 {
+            background: white;
+            border-radius: 20px;
+            padding: 60px 40px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+        
+        .header-3::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #ff7675, #fd79a8, #a29bfe, #74b9ff);
+        }
+        
+        .header-content-3 {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .header-image-3 {
+            flex: 0 0 200px;
+        }
+        
+        .avatar-placeholder-3 {
+            width: 200px;
+            height: 200px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #ff7675, #fd79a8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3.5rem;
+            transform: rotate(-5deg);
+            box-shadow: 10px 10px 0 #dfe6e9;
+        }
+        
+        .header-text-3 {
+            flex: 1;
+        }
+        
+        .header-3 .name {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: #2d3436;
+            margin-bottom: 10px;
+        }
+        
+        .header-3 .title {
+            font-size: 1.5rem;
+            color: #ff7675;
+            font-weight: 500;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .title-decoration {
+            width: 30px;
+            height: 4px;
+            background: #ff7675;
+            margin-right: 15px;
+        }
+        
+        .header-3 .description {
+            font-size: 1.1rem;
+            color: #636e72;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            max-width: 500px;
+        }
+        
+        .skills-3 {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .skill-tag {
+            background: #f8f9fa;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #636e72;
+            border: 1px solid #dfe6e9;
+        }
+        
+        .header-3 .cta-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .btn-creative {
+            background: #ff7675;
+            color: white;
+            box-shadow: 0 5px 15px rgba(255, 118, 117, 0.2);
+        }
+        
+        .btn-creative:hover {
+            background: #e66766;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 118, 117, 0.3);
+        }
+        
+        .btn-social {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #f8f9fa;
+            color: #636e72;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid #dfe6e9;
+        }
+        
+        .btn-social:hover {
+            background: #ff7675;
+            color: white;
+            transform: translateY(-3px);
+            border-color: #ff7675;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 10px;
+            margin-left: 10px;
+        }
+        
+        /* Code Display */
+        .code-display {
+            background: #2d3436;
+            color: #dfe6e9;
+            border-radius: 10px;
+            padding: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            margin-top: 20px;
+            display: none;
+        }
+        
+        .code-display.active {
+            display: block;
+        }
+        
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #404848;
+        }
+        
+        .copy-btn {
+            background: #00b894;
+            color: white;
+            border: none;
+            padding: 5px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .header-content-1, .header-content-3 {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .header-1 .cta-buttons, .header-3 .cta-buttons {
+                justify-content: center;
+            }
+            
+            .header-image-1, .header-image-3 {
+                margin-top: 30px;
+            }
+            
+            .stats-2 {
+                flex-wrap: wrap;
+            }
+            
+            .header-1 .name, .header-2 .name, .header-3 .name {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .header-1, .header-2, .header-3 {
+                padding: 40px 20px;
+            }
+            
+            .header-1 .name, .header-2 .name, .header-3 .name {
+                font-size: 2rem;
+            }
+            
+            .cta-buttons {
                 flex-direction: column;
                 align-items: center;
             }
             
-            .column {
-                max-width: 500px;
+            .btn {
                 width: 100%;
-            }
-        }
-        
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 2.2rem;
+                max-width: 250px;
             }
             
-            .column {
-                min-width: 100%;
-                padding: 25px;
+            .social-links {
+                margin-left: 0;
+                margin-top: 10px;
+                justify-content: center;
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Animated Column Boxes</h1>
-        <p class="subtitle">Scroll down to see the animation effect in action</p>
-        <div class="instructions">
-            <p><i class="fas fa-info-circle"></i> Each column will animate into view as you scroll down the page. Try scrolling slowly to see the staggered animation effect.</p>
-        </div>
-    </header>
-    
-    <div class="container">
-        <div class="column">
-            <div class="icon">
-                <i class="fas fa-palette"></i>
-            </div>
-            <h2>Design Principles</h2>
-            <div class="column-content">
-                <p>Our design approach focuses on creating visually appealing and user-friendly interfaces that enhance user experience across all devices.</p>
-                <ul class="features">
-                    <li>Responsive layouts</li>
-                    <li>Consistent color schemes</li>
-                    <li>Intuitive navigation</li>
-                    <li>Accessibility focused</li>
-                </ul>
-                <p>We follow the latest design trends while maintaining functionality as our top priority.</p>
-            </div>
-        </div>
+    <div class="header-preview">
+        <h1>Portfolio Header Styles</h1>
+        <p>Choose from three professionally designed portfolio headers. Click on a style button to view the HTML code for that design.</p>
         
-        <div class="column">
-            <div class="icon">
-                <i class="fas fa-code"></i>
-            </div>
-            <h2>Development</h2>
-            <div class="column-content">
-                <p>We use modern web technologies to build fast, secure, and scalable applications that meet today's digital demands.</p>
-                <ul class="features">
-                    <li>Clean, maintainable code</li>
-                    <li>Cross-browser compatibility</li>
-                    <li>Performance optimization</li>
-                    <li>SEO best practices</li>
-                </ul>
-                <p>Our development process is agile and collaborative, ensuring we deliver high-quality solutions on time.</p>
-            </div>
-        </div>
-        
-        <div class="column">
-            <div class="icon">
-                <i class="fas fa-rocket"></i>
-            </div>
-            <h2>Animation Effects</h2>
-            <div class="column-content">
-                <p>Subtle animations enhance user engagement and create a more dynamic, interactive experience on your website.</p>
-                <ul class="features">
-                    <li>Scroll-triggered animations</li>
-                    <li>Smooth transitions</li>
-                    <li>Interactive hover effects</li>
-                    <li>Performance-conscious</li>
-                </ul>
-                <p>Animations are implemented with CSS and JavaScript to ensure they're smooth and don't impact page performance.</p>
-            </div>
+        <div class="style-selector">
+            <button class="style-btn active" data-style="1">Modern Minimalist</button>
+            <button class="style-btn" data-style="2">Dark Professional</button>
+            <button class="style-btn" data-style="3">Creative Designer</button>
         </div>
     </div>
     
-    <div class="scroll-indicator" id="scrollToTop">
-        <i class="fas fa-arrow-up"></i>
-    </div>
+    <div class="portfolio-headers">
+        <!-- Header 1: Modern Minimalist -->
+        <div class="header-1" id="header1">
+            <div class="header-content-1">
+                <div class="header-text-1">
+                    <h1 class="name">Alex Morgan</h1>
+                    <h2 class="title">Frontend Developer & UI Designer</h2>
+                    <p class="description">I create beautiful, functional web experiences with a focus on clean code, responsive design, and user-centered interfaces. Passionate about modern JavaScript frameworks and cutting-edge CSS techniques.</p>
+                    <div class="cta-buttons">
+                        <a href="#" class="btn btn-primary">View My Work</a>
+                        <a href="#" class="btn btn-secondary">Download CV</a>
+                    </div>
+                </div>
+                <div class="header-image-1">
+                    <div class="avatar-placeholder-1">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="code-display" id="code1">
+                <div class="code-header">
+                    <span>HTML Code for Modern Minimalist Header</span>
+                    <button class="copy-btn" data-target="code1">Copy Code</button>
+                </div>
+                <pre><code>&lt;div class="header-1"&gt;
+  &lt;div class="header-content-1"&gt;
+    &lt;div class="header-text-1"&gt;
+      &lt;h1 class="name"&gt;Alex Morgan&lt;/h1&gt;
+      &lt;h2 class="title"&gt;Frontend Developer &amp; UI Designer&lt;/h2&gt;
+      &lt;p class="description"&gt;I create beautiful, functional web experiences...&lt;/p&gt;
+      &lt;div class="cta-buttons"&gt;
+        &lt;a href="#" class="btn btn-primary"&gt;View My Work&lt;/a&gt;
+        &lt;a href="#" class="btn btn-secondary"&gt;Download CV&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="header-image-1"&gt;
+      &lt;div class="avatar-placeholder-1"&gt;
+        &lt;i class="fas fa-user"&gt;&lt;/i&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+        </div>
+        
+        <!-- Header 2: Dark Professional -->
+        <div class="header-2" id="header2">
+            <div class="header-content-2">
+                <h1 class="name">Sarah Chen</h1>
+                <h2 class="title">Full Stack Developer</h2>
+                <p class="description">Building scalable web applications with modern technologies. Specializing in React, Node.js, and cloud infrastructure. I transform complex problems into elegant, efficient solutions.</p>
+                
+                <div class="stats-2">
+                    <div class="stat-item">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Projects Completed</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">5+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Client Satisfaction</div>
+                    </div>
+                </div>
+                
+                <div class="cta-buttons">
+                    <a href="#" class="btn btn-dark">View Portfolio</a>
+                    <a href="#" class="btn btn-outline-light">Contact Me</a>
+                </div>
+            </div>
+            
+            <div class="code-display" id="code2">
+                <div class="code-header">
+                    <span>HTML Code for Dark Professional Header</span>
+                    <button class="copy-btn" data-target="code2">Copy Code</button>
+                </div>
+                <pre><code>&lt;div class="header-2"&gt;
+  &lt;div class="header-content-2"&gt;
+    &lt;h1 class="name"&gt;Sarah Chen&lt;/h1&gt;
+    &lt;h2 class="title"&gt;Full Stack Developer&lt;/h2&gt;
+    &lt;p class="description"&gt;Building scalable web applications...&lt;/p&gt;
     
-    <footer>
-        <p>Scrollable Animated Columns &copy; 2023 | Created with HTML, CSS & JavaScript</p>
-    </footer>
+    &lt;div class="stats-2"&gt;
+      &lt;div class="stat-item"&gt;
+        &lt;div class="stat-number"&gt;50+&lt;/div&gt;
+        &lt;div class="stat-label"&gt;Projects Completed&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class="stat-item"&gt;
+        &lt;div class="stat-number"&gt;5+&lt;/div&gt;
+        &lt;div class="stat-label"&gt;Years Experience&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class="stat-item"&gt;
+        &lt;div class="stat-number"&gt;100%&lt;/div&gt;
+        &lt;div class="stat-label"&gt;Client Satisfaction&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="cta-buttons"&gt;
+      &lt;a href="#" class="btn btn-dark"&gt;View Portfolio&lt;/a&gt;
+      &lt;a href="#" class="btn btn-outline-light"&gt;Contact Me&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+        </div>
+        
+        <!-- Header 3: Creative Designer -->
+        <div class="header-3" id="header3">
+            <div class="header-content-3">
+                <div class="header-image-3">
+                    <div class="avatar-placeholder-3">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                </div>
+                <div class="header-text-3">
+                    <h1 class="name">Jamie Rivera</h1>
+                    <h2 class="title">
+                        <span class="title-decoration"></span>
+                        Digital Designer & Art Director
+                    </h2>
+                    <p class="description">Creating visually stunning digital experiences that tell stories and evoke emotions. I blend design principles with technical expertise to deliver memorable brand experiences.</p>
+                    
+                    <div class="skills-3">
+                        <span class="skill-tag">UI/UX Design</span>
+                        <span class="skill-tag">Brand Identity</span>
+                        <span class="skill-tag">Motion Graphics</span>
+                        <span class="skill-tag">Web Design</span>
+                        <span class="skill-tag">Illustration</span>
+                    </div>
+                    
+                    <div class="cta-buttons">
+                        <a href="#" class="btn btn-creative">Explore Projects</a>
+                        <div class="social-links">
+                            <a href="#" class="btn-social"><i class="fab fa-behance"></i></a>
+                            <a href="#" class="btn-social"><i class="fab fa-dribbble"></i></a>
+                            <a href="#" class="btn-social"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="btn-social"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="code-display" id="code3">
+                <div class="code-header">
+                    <span>HTML Code for Creative Designer Header</span>
+                    <button class="copy-btn" data-target="code3">Copy Code</button>
+                </div>
+                <pre><code>&lt;div class="header-3"&gt;
+  &lt;div class="header-content-3"&gt;
+    &lt;div class="header-image-3"&gt;
+      &lt;div class="avatar-placeholder-3"&gt;
+        &lt;i class="fas fa-paint-brush"&gt;&lt;/i&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="header-text-3"&gt;
+      &lt;h1 class="name"&gt;Jamie Rivera&lt;/h1&gt;
+      &lt;h2 class="title"&gt;
+        &lt;span class="title-decoration"&gt;&lt;/span&gt;
+        Digital Designer &amp; Art Director
+      &lt;/h2&gt;
+      &lt;p class="description"&gt;Creating visually stunning digital experiences...&lt;/p&gt;
+      
+      &lt;div class="skills-3"&gt;
+        &lt;span class="skill-tag"&gt;UI/UX Design&lt;/span&gt;
+        &lt;span class="skill-tag"&gt;Brand Identity&lt;/span&gt;
+        &lt;span class="skill-tag"&gt;Motion Graphics&lt;/span&gt;
+        &lt;span class="skill-tag"&gt;Web Design&lt;/span&gt;
+        &lt;span class="skill-tag"&gt;Illustration&lt;/span&gt;
+      &lt;/div&gt;
+      
+      &lt;div class="cta-buttons"&gt;
+        &lt;a href="#" class="btn btn-creative"&gt;Explore Projects&lt;/a&gt;
+        &lt;div class="social-links"&gt;
+          &lt;a href="#" class="btn-social"&gt;&lt;i class="fab fa-behance"&gt;&lt;/i&gt;&lt;/a&gt;
+          &lt;a href="#" class="btn-social"&gt;&lt;i class="fab fa-dribbble"&gt;&lt;/i&gt;&lt;/a&gt;
+          &lt;a href="#" class="btn-social"&gt;&lt;i class="fab fa-instagram"&gt;&lt;/i&gt;&lt;/a&gt;
+          &lt;a href="#" class="btn-social"&gt;&lt;i class="fab fa-linkedin-in"&gt;&lt;/i&gt;&lt;/a&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+        </div>
+    </div>
     
     <script>
-        // Function to check if element is in viewport
-        function isInViewport(element) {
-            const rect = element.getBoundingClientRect();
-            return (
-                rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.85 &&
-                rect.bottom >= 0
-            );
-        }
-        
-        // Function to add animation class when element is in viewport
-        function animateOnScroll() {
-            const columns = document.querySelectorAll('.column');
+        document.addEventListener('DOMContentLoaded', function() {
+            const styleBtns = document.querySelectorAll('.style-btn');
+            const codeDisplays = document.querySelectorAll('.code-display');
+            const copyBtns = document.querySelectorAll('.copy-btn');
             
-            columns.forEach(column => {
-                if (isInViewport(column)) {
-                    column.classList.add('animate');
-                }
-            });
-        }
-        
-        // Initialize animations on page load
-        document.addEventListener('DOMContentLoaded', () => {
-            // Trigger animation for columns already in view
-            animateOnScroll();
-            
-            // Add scroll event listener
-            window.addEventListener('scroll', animateOnScroll);
-            
-            // Scroll to top functionality
-            const scrollToTopBtn = document.getElementById('scrollToTop');
-            
-            scrollToTopBtn.addEventListener('click', () => {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
+            // Style selector functionality
+            styleBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const style = this.getAttribute('data-style');
+                    
+                    // Update active button
+                    styleBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Hide all code displays
+                    codeDisplays.forEach(code => code.classList.remove('active'));
+                    
+                    // Show selected code display
+                    document.getElementById(`code${style}`).classList.add('active');
+                    
+                    // Scroll to the selected header
+                    document.getElementById(`header${style}`).scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
                 });
             });
             
-            // Show/hide scroll to top button based on scroll position
-            window.addEventListener('scroll', () => {
-                if (window.pageYOffset > 300) {
-                    scrollToTopBtn.style.opacity = '1';
-                    scrollToTopBtn.style.visibility = 'visible';
-                } else {
-                    scrollToTopBtn.style.opacity = '0';
-                    scrollToTopBtn.style.visibility = 'hidden';
-                }
+            // Copy code functionality
+            copyBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const targetId = this.getAttribute('data-target');
+                    const codeElement = document.getElementById(targetId).querySelector('code');
+                    const codeText = codeElement.textContent;
+                    
+                    // Create temporary textarea to copy text
+                    const textarea = document.createElement('textarea');
+                    textarea.value = codeText;
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textarea);
+                    
+                    // Visual feedback
+                    const originalText = this.textContent;
+                    this.textContent = 'Copied!';
+                    this.style.background = '#00b894';
+                    
+                    setTimeout(() => {
+                        this.textContent = originalText;
+                        this.style.background = '';
+                    }, 2000);
+                });
             });
             
-            // Initialize scroll to top button visibility
-            scrollToTopBtn.style.opacity = '0';
-            scrollToTopBtn.style.visibility = 'hidden';
+            // Initially show first header's code
+            document.getElementById('code1').classList.add('active');
         });
     </script>
 </body>
