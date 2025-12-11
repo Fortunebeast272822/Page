@@ -3,427 +3,351 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Headers - Tailwind CSS</title>
+    <title>Login</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen flex items-center justify-center p-4">
+    <div class="max-w-md w-full bg-white rounded-2xl shadow-lg overflow-hidden">
+        <!-- Login Form Container -->
+        <div class="p-8">
+            <!-- Header -->
+            <div class="mb-8">
+                <h1 class="text-3xl font-bold text-gray-900 mb-2">Log in</h1>
+                <p class="text-gray-600">Enter your phone number or email to continue</p>
+            </div>
+
+            <!-- Phone/Email Selection -->
+            <div class="mb-6">
+                <div class="flex border rounded-lg overflow-hidden mb-6">
+                    <button id="phoneTab" class="flex-1 py-3 text-center font-medium bg-gray-100 text-gray-900">
+                        Phone
+                    </button>
+                    <button id="emailTab" class="flex-1 py-3 text-center font-medium text-gray-600">
+                        Email / Username
+                    </button>
+                </div>
+
+                <!-- Divider -->
+                <div class="relative mb-6">
+                    <div class="absolute inset-0 flex items-center">
+                        <div class="w-full border-t border-gray-200"></div>
+                    </div>
+                    <div class="relative flex justify-center text-sm">
+                        <span class="px-2 bg-white text-gray-500">or</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phone Input Section (Default) -->
+            <div id="phoneSection" class="space-y-6">
+                <!-- Country Code Selector -->
+                <div class="border rounded-lg p-3 hover:border-gray-400 transition-colors cursor-pointer">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <span class="text-lg mr-2">🇪🇸</span>
+                            <span class="font-medium">ES +34</span>
+                            <i class="fas fa-chevron-down ml-2 text-gray-400"></i>
+                        </div>
+                        <span class="text-gray-400">Phone number</span>
+                    </div>
+                </div>
+
+                <!-- Phone Number Input -->
+                <div class="border rounded-lg overflow-hidden">
+                    <input 
+                        type="tel" 
+                        id="phoneInput"
+                        placeholder="Enter your phone number"
+                        class="w-full px-4 py-3 text-lg focus:outline-none"
+                    >
+                </div>
+            </div>
+
+            <!-- Email Input Section (Hidden by default) -->
+            <div id="emailSection" class="space-y-6 hidden">
+                <!-- Email Input -->
+                <div class="border rounded-lg overflow-hidden">
+                    <input 
+                        type="text" 
+                        id="emailInput"
+                        placeholder="Email or username"
+                        class="w-full px-4 py-3 text-lg focus:outline-none"
+                    >
+                </div>
+            </div>
+
+            <!-- Save Login Info -->
+            <div class="mt-8 mb-6 p-4 bg-blue-50 rounded-lg">
+                <div class="flex items-start">
+                    <div class="flex-shrink-0 mt-0.5">
+                        <i class="fas fa-cloud text-blue-500"></i>
+                    </div>
+                    <div class="ml-3">
+                        <p class="text-sm text-blue-800">
+                            <span class="font-medium">Save login info on your iCloud devices</span> to log in automatically next time.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Continue Button -->
+            <button id="continueBtn" 
+                    class="w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-3 px-4 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    disabled>
+                Continue
+            </button>
+
+            <!-- Help Links -->
+            <div class="mt-8 text-center space-y-3">
+                <a href="#" class="block text-blue-500 hover:text-blue-600 font-medium">
+                    <i class="fas fa-question-circle mr-2"></i>
+                    Having trouble logging in?
+                </a>
+                <a href="#" class="block text-blue-500 hover:text-blue-600 font-medium">
+                    <i class="fas fa-user-plus mr-2"></i>
+                    Create new account
+                </a>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="bg-gray-50 px-8 py-4 border-t border-gray-200">
+            <div class="flex justify-between items-center">
+                <a href="#" class="text-gray-500 hover:text-gray-700 text-sm">
+                    <i class="fas fa-shield-alt mr-1"></i>
+                    Privacy Policy
+                </a>
+                <a href="#" class="text-gray-500 hover:text-gray-700 text-sm">
+                    <i class="fas fa-file-alt mr-1"></i>
+                    Terms of Service
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Country Code Modal -->
+    <div id="countryModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl max-w-md w-full max-h-[80vh] overflow-hidden">
+            <div class="p-4 border-b">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-lg font-medium">Select Country</h3>
+                    <button id="closeModal" class="text-gray-400 hover:text-gray-600">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="overflow-y-auto max-h-[60vh]">
+                <!-- Country List -->
+                <div class="divide-y">
+                    <div class="country-option p-3 hover:bg-gray-50 cursor-pointer flex items-center justify-between" data-code="+34">
+                        <div class="flex items-center">
+                            <span class="text-xl mr-3">🇪🇸</span>
+                            <span>Spain (+34)</span>
+                        </div>
+                        <i class="fas fa-check text-blue-500 hidden"></i>
+                    </div>
+                    <div class="country-option p-3 hover:bg-gray-50 cursor-pointer flex items-center justify-between" data-code="+1">
+                        <div class="flex items-center">
+                            <span class="text-xl mr-3">🇺🇸</span>
+                            <span>United States (+1)</span>
+                        </div>
+                        <i class="fas fa-check text-blue-500 hidden"></i>
+                    </div>
+                    <div class="country-option p-3 hover:bg-gray-50 cursor-pointer flex items-center justify-between" data-code="+44">
+                        <div class="flex items-center">
+                            <span class="text-xl mr-3">🇬🇧</span>
+                            <span>United Kingdom (+44)</span>
+                        </div>
+                        <i class="fas fa-check text-blue-500 hidden"></i>
+                    </div>
+                    <div class="country-option p-3 hover:bg-gray-50 cursor-pointer flex items-center justify-between" data-code="+33">
+                        <div class="flex items-center">
+                            <span class="text-xl mr-3">🇫🇷</span>
+                            <span>France (+33)</span>
+                        </div>
+                        <i class="fas fa-check text-blue-500 hidden"></i>
+                    </div>
+                    <div class="country-option p-3 hover:bg-gray-50 cursor-pointer flex items-center justify-between" data-code="+49">
+                        <div class="flex items-center">
+                            <span class="text-xl mr-3">🇩🇪</span>
+                            <span>Germany (+49)</span>
+                        </div>
+                        <i class="fas fa-check text-blue-500 hidden"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    animation: {
-                        'fade-in-down': 'fadeInDown 0.6s ease-out',
-                        'fade-in-up': 'fadeInUp 0.6s ease-out',
-                        'slide-in-right': 'slideInRight 0.5s ease-out',
-                        'pulse-slow': 'pulse 3s infinite',
-                    },
-                    keyframes: {
-                        fadeInDown: {
-                            '0%': { opacity: '0', transform: 'translateY(-20px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        },
-                        fadeInUp: {
-                            '0%': { opacity: '0', transform: 'translateY(20px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        },
-                        slideInRight: {
-                            '0%': { opacity: '0', transform: 'translateX(20px)' },
-                            '100%': { opacity: '1', transform: 'translateX(0)' },
-                        },
-                    },
-                    backgroundImage: {
-                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-                        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-                    },
+        document.addEventListener('DOMContentLoaded', function() {
+            // DOM Elements
+            const phoneTab = document.getElementById('phoneTab');
+            const emailTab = document.getElementById('emailTab');
+            const phoneSection = document.getElementById('phoneSection');
+            const emailSection = document.getElementById('emailSection');
+            const phoneInput = document.getElementById('phoneInput');
+            const emailInput = document.getElementById('emailInput');
+            const continueBtn = document.getElementById('continueBtn');
+            const countrySelector = phoneSection.querySelector('.border.rounded-lg.p-3');
+            const countryModal = document.getElementById('countryModal');
+            const closeModal = document.getElementById('closeModal');
+            const countryOptions = document.querySelectorAll('.country-option');
+            
+            // Current country code
+            let currentCountryCode = '+34';
+            let currentCountryName = 'ES';
+            let currentCountryFlag = '🇪🇸';
+
+            // Tab switching functionality
+            phoneTab.addEventListener('click', () => {
+                phoneTab.classList.add('bg-gray-100', 'text-gray-900');
+                phoneTab.classList.remove('text-gray-600');
+                emailTab.classList.remove('bg-gray-100', 'text-gray-900');
+                emailTab.classList.add('text-gray-600');
+                
+                phoneSection.classList.remove('hidden');
+                emailSection.classList.add('hidden');
+                
+                validateInput();
+            });
+
+            emailTab.addEventListener('click', () => {
+                emailTab.classList.add('bg-gray-100', 'text-gray-900');
+                emailTab.classList.remove('text-gray-600');
+                phoneTab.classList.remove('bg-gray-100', 'text-gray-900');
+                phoneTab.classList.add('text-gray-600');
+                
+                emailSection.classList.remove('hidden');
+                phoneSection.classList.add('hidden');
+                
+                validateInput();
+            });
+
+            // Input validation
+            function validateInput() {
+                if (phoneSection.classList.contains('hidden')) {
+                    // Email validation
+                    const email = emailInput.value.trim();
+                    const isValid = email.includes('@') && email.includes('.') && email.length > 5;
+                    continueBtn.disabled = !isValid;
+                } else {
+                    // Phone validation
+                    const phone = phoneInput.value.trim();
+                    const isValid = phone.length >= 7 && /^[0-9\s+()-]+$/.test(phone);
+                    continueBtn.disabled = !isValid;
                 }
             }
-        }
+
+            // Country selector modal
+            countrySelector.addEventListener('click', () => {
+                countryModal.classList.remove('hidden');
+                // Mark current selection
+                countryOptions.forEach(option => {
+                    const checkIcon = option.querySelector('.fa-check');
+                    if (option.dataset.code === currentCountryCode) {
+                        checkIcon.classList.remove('hidden');
+                    } else {
+                        checkIcon.classList.add('hidden');
+                    }
+                });
+            });
+
+            closeModal.addEventListener('click', () => {
+                countryModal.classList.add('hidden');
+            });
+
+            // Country selection
+            countryOptions.forEach(option => {
+                option.addEventListener('click', () => {
+                    const code = option.dataset.code;
+                    const text = option.querySelector('span').textContent;
+                    const flag = option.querySelector('.text-xl').textContent;
+                    
+                    currentCountryCode = code;
+                    currentCountryName = text.split(' ')[0];
+                    currentCountryFlag = flag;
+                    
+                    // Update display
+                    countrySelector.querySelector('.text-lg').textContent = flag;
+                    countrySelector.querySelector('.font-medium').textContent = `${currentCountryName} ${code}`;
+                    
+                    // Close modal
+                    countryModal.classList.add('hidden');
+                    
+                    // Update all checkmarks
+                    countryOptions.forEach(opt => {
+                        const checkIcon = opt.querySelector('.fa-check');
+                        if (opt.dataset.code === code) {
+                            checkIcon.classList.remove('hidden');
+                        } else {
+                            checkIcon.classList.add('hidden');
+                        }
+                    });
+                });
+            });
+
+            // Close modal on outside click
+            countryModal.addEventListener('click', (e) => {
+                if (e.target === countryModal) {
+                    countryModal.classList.add('hidden');
+                }
+            });
+
+            // Input event listeners for validation
+            phoneInput.addEventListener('input', validateInput);
+            emailInput.addEventListener('input', validateInput);
+
+            // Form submission
+            continueBtn.addEventListener('click', function() {
+                if (this.disabled) return;
+                
+                const isPhoneMode = !phoneSection.classList.contains('hidden');
+                
+                if (isPhoneMode) {
+                    const phoneNumber = phoneInput.value.trim();
+                    alert(`Sending verification code to ${currentCountryCode} ${phoneNumber}`);
+                    // In real app, you would make an API call here
+                } else {
+                    const email = emailInput.value.trim();
+                    alert(`Sending login link to ${email}`);
+                    // In real app, you would make an API call here
+                }
+                
+                // Simulate loading
+                const originalText = this.textContent;
+                this.textContent = 'Processing...';
+                this.disabled = true;
+                
+                setTimeout(() => {
+                    this.textContent = originalText;
+                    this.disabled = false;
+                }, 1500);
+            });
+
+            // Enter key support
+            phoneInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter' && !continueBtn.disabled) {
+                    continueBtn.click();
+                }
+            });
+
+            emailInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter' && !continueBtn.disabled) {
+                    continueBtn.click();
+                }
+            });
+
+            // Initial validation
+            validateInput();
+        });
     </script>
-</head>
-<body class="bg-gray-50 min-h-screen p-4 md:p-8">
-    
-    <!-- Page Header -->
-    <div class="max-w-7xl mx-auto mb-12 text-center">
-        <h1 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent mb-4">
-            Portfolio Headers with Navigation
-        </h1>
-        <p class="text-gray-600 text-lg max-w-2xl mx-auto">
-            Three different portfolio header designs built entirely with Tailwind CSS
-        </p>
-        <div class="flex flex-wrap justify-center gap-3 mt-6">
-            <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm font-medium">Tailwind CSS Only</span>
-            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">Fully Responsive</span>
-            <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium">Interactive</span>
-        </div>
-    </div>
-
-    <!-- Header 1: Modern Minimalist -->
-    <div class="max-w-7xl mx-auto mb-16">
-        <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
-            <!-- Header with Navigation -->
-            <div class="p-6 md:p-8">
-                <!-- Navigation Bar -->
-                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 md:mb-12 gap-4">
-                    <div class="flex items-center">
-                        <div class="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
-                            <span class="text-white font-bold text-xl">JM</span>
-                        </div>
-                        <span class="ml-3 text-xl font-bold text-gray-800">Jordan Miller</span>
-                    </div>
-                    
-                    <!-- Desktop Navigation -->
-                    <div class="hidden md:flex items-center space-x-8">
-                        <a href="#" class="text-gray-600 hover:text-purple-600 font-medium transition-colors">Work</a>
-                        <a href="#" class="text-gray-600 hover:text-purple-600 font-medium transition-colors">Services</a>
-                        <a href="#" class="text-gray-600 hover:text-purple-600 font-medium transition-colors">About</a>
-                        <a href="#" class="text-gray-600 hover:text-purple-600 font-medium transition-colors">Blog</a>
-                        <button class="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-2 rounded-lg font-medium hover:opacity-90 transition-opacity">
-                            Contact
-                        </button>
-                    </div>
-                    
-                    <!-- Mobile Menu Button -->
-                    <button class="md:hidden text-gray-600">
-                        <i class="fas fa-bars text-2xl"></i>
-                    </button>
-                </div>
-                
-                <!-- Hero Content -->
-                <div class="flex flex-col lg:flex-row items-center justify-between gap-8">
-                    <div class="lg:w-7/12">
-                        <span class="inline-block px-4 py-2 bg-gradient-to-r from-purple-50 to-blue-50 text-purple-700 rounded-full font-medium mb-4">
-                            Frontend Developer & UI Designer
-                        </span>
-                        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                            I create <span class="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">beautiful</span> digital experiences
-                        </h2>
-                        <p class="text-gray-600 text-lg mb-8 max-w-2xl">
-                            Specializing in React, Vue.js, and modern CSS frameworks. I transform complex problems into elegant, user-friendly solutions.
-                        </p>
-                        <div class="flex flex-wrap gap-4">
-                            <button class="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-3 rounded-lg font-medium hover:shadow-lg transition-shadow">
-                                View Projects
-                            </button>
-                            <button class="border-2 border-gray-300 text-gray-700 px-8 py-3 rounded-lg font-medium hover:border-purple-500 hover:text-purple-600 transition-colors">
-                                Download CV
-                            </button>
-                        </div>
-                        <div class="flex items-center mt-8 space-x-6">
-                            <div class="flex items-center">
-                                <div class="w-10 h-10 rounded-full bg-gradient-to-r from-purple-100 to-blue-100 flex items-center justify-center">
-                                    <i class="fas fa-medal text-purple-600"></i>
-                                </div>
-                                <div class="ml-3">
-                                    <p class="font-bold text-gray-900">5+ Years</p>
-                                    <p class="text-gray-500 text-sm">Experience</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center">
-                                <div class="w-10 h-10 rounded-full bg-gradient-to-r from-purple-100 to-blue-100 flex items-center justify-center">
-                                    <i class="fas fa-project-diagram text-purple-600"></i>
-                                </div>
-                                <div class="ml-3">
-                                    <p class="font-bold text-gray-900">120+</p>
-                                    <p class="text-gray-500 text-sm">Projects</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Profile Image -->
-                    <div class="lg:w-5/12 flex justify-center">
-                        <div class="relative">
-                            <div class="w-64 h-64 md:w-80 md:h-80 bg-gradient-to-br from-purple-500 to-blue-500 rounded-2xl shadow-xl flex items-center justify-center">
-                                <i class="fas fa-user text-white text-8xl"></i>
-                            </div>
-                            <div class="absolute -bottom-4 -right-4 bg-white p-4 rounded-xl shadow-lg">
-                                <div class="text-center">
-                                    <p class="font-bold text-gray-900">Available for</p>
-                                    <p class="text-purple-600 font-semibold">Freelance Work</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Footer of Header 1 -->
-            <div class="px-8 py-4 bg-gray-50 border-t border-gray-100">
-                <p class="text-gray-500 text-sm">Header 1: Modern Minimalist Design</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Header 2: Dark Professional -->
-    <div class="max-w-7xl mx-auto mb-16">
-        <div class="bg-gradient-to-br from-gray-900 to-black rounded-2xl shadow-2xl overflow-hidden">
-            <!-- Header with Navigation -->
-            <div class="p-6 md:p-8">
-                <!-- Navigation Bar -->
-                <div class="flex justify-between items-center mb-12">
-                    <div class="flex items-center">
-                        <div class="w-12 h-12 bg-gradient-to-tr from-cyan-500 to-blue-500 rounded-xl flex items-center justify-center">
-                            <i class="fas fa-code text-white text-xl"></i>
-                        </div>
-                        <span class="ml-4 text-2xl font-bold text-white">Sarah Chen</span>
-                    </div>
-                    
-                    <!-- Desktop Navigation -->
-                    <div class="hidden md:flex items-center space-x-10">
-                        <a href="#" class="text-gray-300 hover:text-white font-medium transition-colors">Portfolio</a>
-                        <a href="#" class="text-gray-300 hover:text-white font-medium transition-colors">Experience</a>
-                        <a href="#" class="text-gray-300 hover:text-white font-medium transition-colors">Skills</a>
-                        <a href="#" class="text-gray-300 hover:text-white font-medium transition-colors">Testimonials</a>
-                        <button class="bg-gradient-to-r from-cyan-500 to-blue-500 text-white px-6 py-2 rounded-lg font-medium hover:shadow-lg hover:shadow-cyan-500/25 transition-shadow">
-                            Get In Touch
-                        </button>
-                    </div>
-                    
-                    <!-- Mobile Menu Button -->
-                    <button class="md:hidden text-white">
-                        <i class="fas fa-bars text-2xl"></i>
-                    </button>
-                </div>
-                
-                <!-- Hero Content -->
-                <div class="flex flex-col lg:flex-row items-center justify-between gap-10">
-                    <div class="lg:w-6/12">
-                        <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
-                            Full Stack Developer & <span class="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">Tech Lead</span>
-                        </h2>
-                        <p class="text-gray-300 text-lg mb-8 max-w-xl">
-                            Building scalable applications with React, Node.js, and cloud technologies. Passionate about clean architecture and performance optimization.
-                        </p>
-                        
-                        <!-- Stats -->
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
-                            <div class="text-center">
-                                <p class="text-3xl font-bold text-white">50+</p>
-                                <p class="text-gray-400">Projects</p>
-                            </div>
-                            <div class="text-center">
-                                <p class="text-3xl font-bold text-white">100%</p>
-                                <p class="text-gray-400">Satisfaction</p>
-                            </div>
-                            <div class="text-center">
-                                <p class="text-3xl font-bold text-white">5.0</p>
-                                <p class="text-gray-400">Avg. Rating</p>
-                            </div>
-                            <div class="text-center">
-                                <p class="text-3xl font-bold text-white">24/7</p>
-                                <p class="text-gray-400">Support</p>
-                            </div>
-                        </div>
-                        
-                        <!-- CTA Buttons -->
-                        <div class="flex flex-wrap gap-4">
-                            <button class="bg-gradient-to-r from-cyan-500 to-blue-500 text-white px-8 py-3 rounded-lg font-medium hover:shadow-lg hover:shadow-cyan-500/25 transition-shadow">
-                                View Case Studies
-                            </button>
-                            <button class="bg-white/10 backdrop-blur-sm text-white px-8 py-3 rounded-lg font-medium hover:bg-white/20 transition-colors border border-white/20">
-                                Schedule Call
-                            </button>
-                        </div>
-                        
-                        <!-- Social Links -->
-                        <div class="flex space-x-4 mt-8">
-                            <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
-                                <i class="fab fa-github text-white"></i>
-                            </a>
-                            <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
-                                <i class="fab fa-linkedin-in text-white"></i>
-                            </a>
-                            <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
-                                <i class="fab fa-twitter text-white"></i>
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <!-- Tech Stack -->
-                    <div class="lg:w-6/12">
-                        <div class="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700/50">
-                            <h3 class="text-xl font-bold text-white mb-6">Tech Stack</h3>
-                            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-                                <div class="bg-gray-800/50 p-4 rounded-xl">
-                                    <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-lg flex items-center justify-center mb-3">
-                                        <i class="fab fa-react text-white"></i>
-                                    </div>
-                                    <p class="text-white font-medium">React.js</p>
-                                </div>
-                                <div class="bg-gray-800/50 p-4 rounded-xl">
-                                    <div class="w-10 h-10 bg-gradient-to-r from-green-500 to-emerald-400 rounded-lg flex items-center justify-center mb-3">
-                                        <i class="fab fa-node-js text-white"></i>
-                                    </div>
-                                    <p class="text-white font-medium">Node.js</p>
-                                </div>
-                                <div class="bg-gray-800/50 p-4 rounded-xl">
-                                    <div class="w-10 h-10 bg-gradient-to-r from-yellow-500 to-orange-400 rounded-lg flex items-center justify-center mb-3">
-                                        <i class="fas fa-database text-white"></i>
-                                    </div>
-                                    <p class="text-white font-medium">MongoDB</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Footer of Header 2 -->
-            <div class="px-8 py-4 bg-gray-900/50 border-t border-gray-800">
-                <p class="text-gray-400 text-sm">Header 2: Dark Professional Design</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Header 3: Creative Designer -->
-    <div class="max-w-7xl mx-auto">
-        <div class="bg-gradient-to-br from-white to-gray-50 rounded-2xl shadow-xl overflow-hidden border border-gray-200">
-            <!-- Header with Navigation -->
-            <div class="p-6 md:p-8">
-                <!-- Navigation Bar -->
-                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-6">
-                    <div class="flex items-center">
-                        <div class="w-10 h-10 bg-gradient-to-br from-pink-500 to-orange-400 rounded-xl flex items-center justify-center">
-                            <i class="fas fa-palette text-white"></i>
-                        </div>
-                        <div class="ml-3">
-                            <span class="text-2xl font-bold text-gray-900">Alex Rivera</span>
-                            <p class="text-pink-600 text-sm font-medium">Creative Director</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Desktop Navigation -->
-                    <div class="hidden md:flex items-center space-x-8">
-                        <a href="#" class="text-gray-600 hover:text-pink-600 font-medium transition-colors">Gallery</a>
-                        <a href="#" class="text-gray-600 hover:text-pink-600 font-medium transition-colors">Process</a>
-                        <a href="#" class="text-gray-600 hover:text-pink-600 font-medium transition-colors">Clients</a>
-                        <a href="#" class="text-gray-600 hover:text-pink-600 font-medium transition-colors">Shop</a>
-                        <a href="#" class="text-gray-600 hover:text-pink-600 font-medium transition-colors">Journal</a>
-                        <button class="bg-gradient-to-r from-pink-500 to-orange-400 text-white px-6 py-2 rounded-full font-medium hover:shadow-lg hover:shadow-pink-500/25 transition-shadow">
-                            Start a Project
-                        </button>
-                    </div>
-                    
-                    <!-- Mobile Menu Button -->
-                    <button class="md:hidden text-gray-600">
-                        <i class="fas fa-bars text-2xl"></i>
-                    </button>
-                </div>
-                
-                <!-- Hero Content -->
-                <div class="flex flex-col lg:flex-row items-center gap-10">
-                    <!-- Left Content -->
-                    <div class="lg:w-6/12">
-                        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                            Designing <span class="bg-gradient-to-r from-pink-600 to-orange-500 bg-clip-text text-transparent">experiences</span> that inspire
-                        </h2>
-                        <p class="text-gray-600 text-lg mb-8 max-w-xl">
-                            Blending aesthetics with functionality to create memorable brand experiences. Specializing in UI/UX, brand identity, and motion design.
-                        </p>
-                        
-                        <!-- Skills -->
-                        <div class="flex flex-wrap gap-3 mb-8">
-                            <span class="px-4 py-2 bg-pink-50 text-pink-700 rounded-full font-medium">UI/UX Design</span>
-                            <span class="px-4 py-2 bg-orange-50 text-orange-700 rounded-full font-medium">Brand Identity</span>
-                            <span class="px-4 py-2 bg-purple-50 text-purple-700 rounded-full font-medium">Motion Graphics</span>
-                            <span class="px-4 py-2 bg-blue-50 text-blue-700 rounded-full font-medium">Web Design</span>
-                        </div>
-                        
-                        <!-- CTA Buttons -->
-                        <div class="flex flex-wrap items-center gap-4">
-                            <button class="bg-gradient-to-r from-pink-500 to-orange-400 text-white px-8 py-3 rounded-full font-medium hover:shadow-lg hover:shadow-pink-500/25 transition-shadow">
-                                View Portfolio
-                            </button>
-                            <div class="flex items-center">
-                                <div class="flex -space-x-2">
-                                    <div class="w-8 h-8 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full"></div>
-                                    <div class="w-8 h-8 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full"></div>
-                                    <div class="w-8 h-8 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full"></div>
-                                </div>
-                                <span class="ml-3 text-gray-600">Worked with 50+ brands</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Right Content -->
-                    <div class="lg:w-6/12">
-                        <div class="relative">
-                            <div class="bg-gradient-to-br from-pink-500 to-orange-400 rounded-2xl p-1">
-                                <div class="bg-white rounded-xl p-6">
-                                    <div class="flex items-center mb-6">
-                                        <div class="w-12 h-12 bg-gradient-to-br from-pink-500 to-orange-400 rounded-full flex items-center justify-center">
-                                            <i class="fas fa-award text-white"></i>
-                                        </div>
-                                        <div class="ml-4">
-                                            <p class="font-bold text-gray-900">Award Winning</p>
-                                            <p class="text-gray-500">Design Studio</p>
-                                        </div>
-                                    </div>
-                                    <p class="text-gray-600 mb-6">
-                                        Featured in Design Weekly, Creative Review, and Behance's top selections.
-                                    </p>
-                                    <div class="flex justify-between">
-                                        <div>
-                                            <p class="text-2xl font-bold text-gray-900">4.9/5.0</p>
-                                            <p class="text-gray-500">Client Rating</p>
-                                        </div>
-                                        <div>
-                                            <p class="text-2xl font-bold text-gray-900">98%</p>
-                                            <p class="text-gray-500">Retention Rate</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Floating Elements -->
-                            <div class="absolute -top-4 -right-4 bg-white p-4 rounded-xl shadow-lg">
-                                <div class="flex items-center">
-                                    <div class="w-10 h-10 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full flex items-center justify-center">
-                                        <i class="fas fa-check text-white"></i>
-                                    </div>
-                                    <div class="ml-3">
-                                        <p class="font-bold text-gray-900">Available</p>
-                                        <p class="text-gray-500 text-sm">For new projects</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Footer of Header 3 -->
-            <div class="px-8 py-4 bg-gray-50 border-t border-gray-100">
-                <p class="text-gray-500 text-sm">Header 3: Creative Designer Style</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Style Selector -->
-    <div class="max-w-7xl mx-auto mt-12 p-6 bg-white rounded-xl shadow-md">
-        <h3 class="text-xl font-bold text-gray-900 mb-4">Choose Your Style</h3>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="p-4 border-2 border-gray-200 rounded-lg hover:border-purple-500 transition-colors cursor-pointer">
-                <div class="w-full h-32 bg-gradient-to-r from-purple-500 to-blue-500 rounded-lg mb-4"></div>
-                <h4 class="font-bold text-gray-900 mb-2">Modern Minimalist</h4>
-                <p class="text-gray-600 text-sm">Clean design with purple/blue gradient and split layout</p>
-            </div>
-            <div class="p-4 border-2 border-gray-200 rounded-lg hover:border-blue-500 transition-colors cursor-pointer">
-                <div class="w-full h-32 bg-gradient-to-r from-gray-900 to-black rounded-lg mb-4"></div>
-                <h4 class="font-bold text-gray-900 mb-2">Dark Professional</h4>
-                <p class="text-gray-600 text-sm">Dark theme with cyan accents and tech stack display</p>
-            </div>
-            <div class="p-4 border-2 border-gray-200 rounded-lg hover:border-pink-500 transition-colors cursor-pointer">
-                <div class="w-full h-32 bg-gradient-to-r from-pink-500 to-orange-400 rounded-lg mb-4"></div>
-                <h4 class="font-bold text-gray-900 mb-2">Creative Designer</h4>
-                <p class="text-gray-600 text-sm">Colorful design with pink/orange gradient and creative elements</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer Note -->
-    <div class="max-w-7xl mx-auto mt-8 text-center text-gray-500">
-        <p>Built entirely with Tailwind CSS • Fully responsive • No custom CSS required</p>
-    </div>
-
 </body>
 </html>
